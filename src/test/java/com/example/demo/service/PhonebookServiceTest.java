@@ -47,7 +47,11 @@ public class PhonebookServiceTest {
 
     assertThat(realList.size()).isEqualTo(expectedList.size());
     for (PhonebookRecord realRecord : realList) {
-      assertThat(realRecord).isIn(expectedList);
+      assertThat(expectedList.stream().anyMatch(phonebookRecord ->
+        phonebookRecord.fullname.equals(realRecord.fullname) &&
+          phonebookRecord.phoneNumber.equals(realRecord.phoneNumber) &&
+          phonebookRecord.email.equals(realRecord.email)
+      )).isEqualTo(true);
     }
   }
 
