@@ -10,13 +10,11 @@ import java.util.List;
 
 @Mapper
 public interface PhonebookMapper {
-  //  @Select("select next value for seq_phonebook_id")
-  @Select("select t from (values next value for seq_phonebook_id) s(t)")
+  @Select("select nextval('seq_phonebook_id')")
   Long nextId();
 
   @Insert("insert into phonebook(id, firstname, middlename, lastname, phonenumber, email) " +
     "values(#{id}, #{firstname}, #{middlename}, #{lastname}, #{phoneNumber}, #{email})")
-//  void insertRecord(long id, String firstname, String middlename, String lastname, String phoneNumber, String email);
   void insertRecord(PhonebookDomain phonebookRecord);
 
   @Select("select firstname, middlename, lastname, phonenumber, email from phonebook order by id")
