@@ -5,12 +5,10 @@ import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
-import org.springframework.stereotype.Component;
 
 import java.util.List;
 
 @Mapper
-@Component
 public interface PhonebookMapper {
   //  @Select("select next value for seq_phonebook_id")
   @Select("select t from (values next value for seq_phonebook_id) s(t)")

@@ -1,4 +1,4 @@
-create table phonebook(
+create table if not exists phonebook(
   id bigint primary key not null,
   firstname varchar(255),
   middlename varchar(255),
@@ -7,4 +7,4 @@ create table phonebook(
   email varchar(255)
 );
 
-create sequence seq_phonebook_id as bigint cycle;
+create sequence if not exists seq_phonebook_id;
