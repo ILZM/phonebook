@@ -1,11 +1,30 @@
 package com.example.demo.domain;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "phonebook")
 public class PhonebookDomain {
+
+  @Id
+  @Column(name = "id")
+  @SequenceGenerator(name = "identifier", sequenceName = "seq_phonebook_id", allocationSize = 1)
+  @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "identifier")
   public Long id;
+
+  @Column(name = "firstname")
   public String firstname;
+
+  @Column(name = "middlename")
   public String middlename;
+
+  @Column(name = "lastname")
   public String lastname;
+
+  @Column(name = "phonenumber")
   public String phoneNumber;
+
+  @Column(name = "email")
   public String email;
 
   public Long getId() {

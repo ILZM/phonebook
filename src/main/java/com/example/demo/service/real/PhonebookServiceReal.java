@@ -1,8 +1,8 @@
 package com.example.demo.service.real;
 
 import com.example.demo.Util;
+import com.example.demo.dao.PhonebookDao;
 import com.example.demo.domain.PhonebookDomain;
-import com.example.demo.mapper.PhonebookMapper;
 import com.example.demo.model.PhonebookRecord;
 import com.example.demo.service.PhonebookService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,11 +15,11 @@ import java.util.List;
 public class PhonebookServiceReal implements PhonebookService {
 
   @Autowired
-  private PhonebookMapper phonebookMapper;
+  private PhonebookDao phonebookDao;
 
   @Override
   public List<PhonebookRecord> getList() {
-    List<PhonebookDomain> domainList = phonebookMapper.getList();
+    Iterable<PhonebookDomain> domainList = phonebookDao.findAll();
 
     List<PhonebookRecord> recordList = new ArrayList<>();
     for (PhonebookDomain domain : domainList) {
